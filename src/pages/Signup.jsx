@@ -1,106 +1,24 @@
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import Nav from '../components/Nav'
 import { Link } from "react-router-dom"
 import { v4 as uuid } from "uuid";
 import Footer from '../components/Footer';
 
-const Signup = () => {
 
+
+
+const Signup = () => {
   const signnameRef = useRef(null);
   const signemailRef = useRef(null);
   const signpassRef = useRef(null);
-  const signcnfmpassRef = useRef(null);
 
   const [profiles, setProfiles] = useState([]);
-  const addProfile = async (e) => {
+  const addProfile=(e)=>{
     e.preventDefault();
-    setProfiles({ id: uuid(), name: signnameRef.current.value, email: signemailRef.current.value, password: signpassRef.current.value })
-
-
-
-    // const response = await fetch('http://192.168.43.215:3000/authors/add', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': 'application/json'
-    //   },
-
-    //   body: JSON.stringify({
-    //     name: signnameRef.current.value,
-    //     email: signemailRef.current.value,
-    //     password: signpassRef.current.value,
-    //   })
-    // })
-    // const data = await response.json();
-    // console.log(data);
-    // localStorage.setItem("user", JSON.stringify(data));
-
-    // console.log(data.errors[0]);
-    // if (data.errors[1] === 'Name has already been taken') {
-    //   alert('Name already in use');
-
-    // }
-    // if (data.errors[0] === 'Email is invalid') {
-    //   alert('Email invalid');
-
-    // }
-    // if (data.errors[0] === 'Email has already been taken') {
-    //   alert('Email already registerd');
-
-    // }
-    // if (signpassRef.current.value !== signcnfmpassRef.current.value){
-    //   alert('enter same password')
-    // }
-    // if (data.errors[0] === 'Password is too short (minimum is 6 characters)') {
-    //   alert('Password is too short (minimum is 6 characters)');
-
-    // }
-
-
-
-
-
-
-
-
-  // const signnameRef = useRef(null);
-  // const signemailRef = useRef(null);
-  // const signpassRef = useRef(null);
-
-  // const navigate = useNavigation();
-  // const [token,setToken] = useState();
-  // const [profiles, setProfiles] = useState([]);
-
-  // const addProfile=async(e)=>{
-  //   e.preventDefault();
-  //   setProfiles({id: uuid() ,name:signnameRef.current.value ,email:signemailRef.current.value, password:signpassRef.current.value})
-  //   console.log(profiles);
-  
-
-  // const response = await fetch('http://192.168.43.215:3000/authors/add',{
-  //   method:'POST',
-  //   headers:{
-  //     'Content-type':'application/json'
-  //   },
-
-  //   body:JSON.stringify({
-  //     name:signnameRef.current.value,
-  //     email:signemailRef.current.value,
-  //     password:signpassRef.current.value,
-  //   })
-  // })
-  //   const data = await response.json();
-  //   console.log(data);
-  //   localStorage.setItem("user",JSON.stringify(data));
-  //   setToken(data);
-  // }
-  // const useNavigation = () => {
-
-  // }
-  // useEffect(()=>{
-  //  if(token)navigate("/") 
-  // },[token])
-  
+    setProfiles(prev=> [...prev,{id: uuid() ,name: signnameRef.current.value ,email:signemailRef.current.value, password:signpassRef.current.value}])
+    console.log(profiles);
+  }
   return (
     <div>
       <Nav/>
@@ -138,5 +56,5 @@ const Signup = () => {
     </div>
   )
 }
-}
-export default Signup;
+
+export default Signup
